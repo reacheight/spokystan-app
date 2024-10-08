@@ -2,12 +2,12 @@ import React from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 const Home: React.FC = () => {
-  const { username } = useAuth()
+  const { firstName, lastName } = useAuth()
 
   return (
     <div className="min-h-screen bg-bg_color flex items-center justify-center">
       <div className="bg-section_bg_color p-8 rounded-lg shadow-2xl max-w-md w-full">
-        <h1 className="text-4xl font-bold mb-6 text-center text-accent_text_color">{username}, welcome to spokystan</h1>
+        <h1 className="text-4xl font-bold mb-6 text-center text-accent_text_color">{firstName} {lastName}, welcome to spokystan</h1>
         <p className="text-subtitle_text_color mb-8 text-center">everythin is spoky here</p>
         
         <button 
