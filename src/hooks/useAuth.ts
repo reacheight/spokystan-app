@@ -35,10 +35,10 @@ export const useAuth = () => {
     initDataUnsafe?.user?.username ||
     USERNAME
 
-  const photoUrl: string | undefined =
+  const photoUrl: any =
     webAuthData?.photo_url ||
-    // initDataUnsafe?.user?.photo_url // lack of types in the lib
-    (typeof window.Telegram?.WebApp.initDataUnsafe.user?.photo_url === 'string' ? window.Telegram?.WebApp.initDataUnsafe.user?.photo_url : undefined)
+    initDataUnsafe?.user?.photo_url // lack of types in the lib
+    // (typeof window.Telegram?.WebApp.initDataUnsafe.user?.photo_url === 'string' ? window.Telegram?.WebApp.initDataUnsafe.user?.photo_url : undefined)
 
   const firstName: string | undefined =
     webAuthData?.first_name ||
