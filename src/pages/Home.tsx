@@ -8,7 +8,7 @@ const Home: React.FC = () => {
         <p className="text-subtitle_text_color mb-8 text-center">everythin is spoky here</p>
         
         <button 
-          onClick={() => alert('Спокистан оформлен')}
+          onClick={() => alert('deposit 10 TON to become spokystan citizen')}
           className="w-full py-2 px-4 bg-button_color text-button_text_color rounded hover:opacity-90 transition duration-300"
         >
           become spokystan citizen 🤙🏻
