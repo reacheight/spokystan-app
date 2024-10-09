@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 const Home: React.FC = () => {
-  const { isAuth, firstName, photoUrl } = useAuth()
+  const { firstName, photoUrl } = useAuth()
 
   return (
     <div className="min-h-screen bg-bg_color flex flex-col items-center justify-center">
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
         <p className="text-subtitle_text_color mb-8 text-center">everythin' is spoky here</p>
         
         <button 
-          onClick={() => alert(`deposit 10 TON to become a spokystan citizen ${isAuth} ${photoUrl}`)}
+          onClick={() => alert(`deposit 10 TON to become a spokystan citizen`)}
           className="w-full py-2 px-4 bg-button_color text-button_text_color rounded hover:opacity-90 transition duration-300"
         >
           become a spokystan citizen 🤙🏻
