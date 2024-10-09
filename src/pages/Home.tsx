@@ -5,7 +5,7 @@ const Home: React.FC = () => {
   const { firstName } = useAuth()
 
   return (
-    <div className="bg-section_bg_color p-8 rounded-lg max-w-md w-full">
+    <div className="p-8 rounded-lg max-w-md w-full">
       <h1 className="text-4xl font-bold mb-6 text-center text-accent_text_color">{firstName}, welcome to spokystan 😌</h1>
       <p className="text-subtitle_text_color mb-8 text-center">everythin' is spoky here</p>
       
