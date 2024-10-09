@@ -2,6 +2,8 @@ import { RouterProvider } from 'react-router-dom'
 import { createHashRouter } from 'react-router-dom'
 
 import Home from './pages/Home'
+import { TonConnectUIProvider } from '@tonconnect/ui-react'
+import Layout from './components/Layout'
 
 
 const router = createHashRouter([
@@ -15,7 +17,11 @@ const router = createHashRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <TonConnectUIProvider manifestUrl='https://spokystan.space/tonconnect-manifest.json'>
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
+    </TonConnectUIProvider>
   )
 }
 
