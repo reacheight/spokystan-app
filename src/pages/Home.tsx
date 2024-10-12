@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from "@supabase/supabase-js";
-import MotionNumber from 'motion-number'
+import MotionNumber from 'motion-number';
+import Typewriter from 'typewriter-effect';
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_PROJECT_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
 
@@ -29,7 +30,49 @@ const Home: React.FC = () => {
         <img src="/logo.png" alt="Spokystan Logo" className="w-20 h-20 mr-5" />
         <div className="flex flex-col items-start">
           <h1 className="text-3xl font-semibold text-accent_text_color">spokystan</h1>
-          <p className="text-base text-subtitle_text_color">the state of the calmness</p>
+          <div className="text-base text-subtitle_text_color flex">
+            <Typewriter
+              options={{
+                cursor: '',
+                loop: true,
+                delay: 100,
+                deleteSpeed: 50,
+              }}
+
+              onInit={(typewriter: any) =>  {
+                typewriter
+                .typeString('the state of calmness')
+                .pauseFor(2000)
+                .deleteChars(8)
+                .pauseFor(1000)
+                .typeString('understanding')
+                .pauseFor(2000)
+                .deleteChars(13)
+                .pauseFor(1000)
+                .typeString('acceptance')
+                .pauseFor(2000)
+                .deleteChars(10)
+                .pauseFor(1000)
+                .typeString('kindness')
+                .pauseFor(2000)
+                .deleteChars(8)
+                .pauseFor(1000)
+                .typeString('peace')
+                .pauseFor(2000)
+                .deleteChars(5)
+                .pauseFor(1000)
+                .typeString('patience')
+                .pauseFor(2000)
+                .deleteChars(8)
+                .pauseFor(1000)
+                .typeString('relief')
+                .pauseFor(2000)
+                .deleteAll()
+                .pauseFor(1000)
+                .start()
+              }}
+            />
+          </div>
         </div>
       </div>
 
