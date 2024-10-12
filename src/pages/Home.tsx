@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from "@supabase/supabase-js";
+import MotionNumber from 'motion-number'
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_PROJECT_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 const Home: React.FC = () => {
   const [citizens, setCitizens] = useState<any[] | null>(null);
+  const [citizenAmount, setCitizenAmount] = useState(0);
 
   useEffect(() => {
     getCitizens();
@@ -16,6 +18,10 @@ const Home: React.FC = () => {
   }
 
   if (citizens === null) return null;
+
+  setInterval(() => {
+    setCitizenAmount(citizens.length);
+  }, 500);
 
   return (
     <div className="p-4 max-w-md w-full">
@@ -30,11 +36,17 @@ const Home: React.FC = () => {
       <div className="grid grid-cols-2 gap-4 mb-8">
         <div className="bg-secondary_bg_color p-4 rounded-lg">
           <h3 className="text-lg font-semibold text-accent_text_color">Population</h3>
-          <p className="text-2xl text-text_color">{citizens.length}</p>
+          <p className="text-2xl text-text_color">
+            <MotionNumber transition={{
+              y: { type: 'spring', duration: 2, bounce: 0.5 },
+            }} value={citizenAmount} />
+          </p>
         </div>
         <div className="bg-secondary_bg_color p-4 rounded-lg">
           <h3 className="text-lg font-semibold text-accent_text_color">Founded</h3>
-          <p className="text-2xl text-text_color">2024</p>
+          <p className="text-2xl text-text_color">
+            2024
+          </p>
         </div>
       </div>
 
