@@ -14,7 +14,7 @@ export default {
         button_color: '#007AFF',
         secondary_button_color: '#FFFFFF70',
         button_text_color: '#FFFFFF',
-        secondary_bg_color: '#EFEFF4',
+        secondary_bg_color: '#131313',
         header_bg_color: '#EFEFF3',
         accent_text_color: '#FFFFFF',
         section_bg_color: '#000000',

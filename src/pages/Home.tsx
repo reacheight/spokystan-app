@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import { useIsConnectionRestored, useTonWallet } from '@tonconnect/ui-react';
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_PROJECT_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 const Home: React.FC = () => {
-  const { firstName } = useAuth()
-  const wallet = useTonWallet()
-  const connectionRestored = useIsConnectionRestored();
-
   const [citizens, setCitizens] = useState<any[] | null>(null);
 
   useEffect(() => {
@@ -21,35 +15,53 @@ const Home: React.FC = () => {
     setCitizens(data || []);
   }
 
+  if (citizens === null) return null;
+
   return (
-    <div className="p-8 rounded-lg max-w-md w-full">
-      <h1 className="text-4xl font-bold mb-6 text-center text-accent_text_color">{firstName}, welcome to spokystan 😌</h1>
-      <p className="text-subtitle_text_color mb-8 text-center">everythin' is spoky here</p>
-
-      {connectionRestored && (
-        <p className="text-center text-text_color">
-          {wallet 
-            ? "🎖 you are a honorary citizen of spokystan"
-            : "👝 connect your wallet to become a citizen of spokystan"}
-        </p>
-      )}
-
-      {citizens && (
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4 text-accent_text_color">citizens of spokystan 🏆</h2>
-          {citizens.length > 0 ? (
-            <ul className="list-none pl-0">
-              {citizens.map((citizen, index) => (
-                <li key={index} className="text-text_color">
-                  {'@' + citizen.username || citizen.name}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-subtitle_text_color">no citizens yet, be the first</p>
-          )}
+    <div className="p-4 max-w-md w-full">
+      <div className="flex items-start mb-8">
+        <img src="/logo.png" alt="Spokystan Logo" className="w-20 h-20 mr-5" />
+        <div className="flex flex-col items-start">
+          <h1 className="text-3xl font-semibold text-accent_text_color">spokystan</h1>
+          <p className="text-base text-subtitle_text_color">the state of the calmness</p>
         </div>
-      )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="bg-secondary_bg_color p-4 rounded-lg">
+          <h3 className="text-lg font-semibold text-accent_text_color">Population</h3>
+          <p className="text-2xl text-text_color">{citizens.length}</p>
+        </div>
+        <div className="bg-secondary_bg_color p-4 rounded-lg">
+          <h3 className="text-lg font-semibold text-accent_text_color">Founded</h3>
+          <p className="text-2xl text-text_color">2024</p>
+        </div>
+      </div>
+
+      <div className="mt-8 flex flex-col items-start">
+        <h2 className="font-semibold mb-4 text-subtitle_text_color">Citizens</h2>
+        <ul className="list-none pl-0 w-full">
+          {citizens.map((citizen, index) => (
+            <li key={index} className="flex items-center mb-4">
+              <img 
+                src={citizen.photo_url || '/default-avatar.png'} 
+                alt={`citizen's photo`}
+                className="w-12 h-12 rounded-full mr-3 object-cover"
+              />
+              <div className="flex flex-col items-start">
+                <span className="text-text_color font-medium">
+                  {citizen.username ? `@${citizen.username}` : citizen.name}
+                </span>
+                {citizen.title && (
+                  <span className="text-subtitle_text_color font-medium text-sm">
+                    {citizen.title}
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
