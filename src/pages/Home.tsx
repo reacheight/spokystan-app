@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       <p className="text-subtitle_text_color mb-8 text-center">everythin' is spoky here</p>
 
       {connectionRestored && (
-        <p className="text-center text-accent_text_color">
+        <p className="text-center text-text_color">
           {wallet 
             ? "🎖 you are a honorary citizen of spokystan"
             : "👝 connect your wallet to become a citizen of spokystan"}
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
           {citizens.length > 0 ? (
             <ul className="list-none pl-0">
               {citizens.map((citizen, index) => (
-                <li key={index} className="text-accent_text_color">
+                <li key={index} className="text-text_color">
                   {'@' + citizen.username || citizen.name}
                 </li>
               ))}
