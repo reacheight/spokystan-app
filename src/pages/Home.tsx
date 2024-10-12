@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useIsConnectionRestored, useTonWallet } from '@tonconnect/ui-react';
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(import.meta.env.VITE_SUPABASE_PROJECT_URL || process.env.SUPABASE_PROJECT_URL, import.meta.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY)
+const supabase = createClient(import.meta.env.VITE_SUPABASE_PROJECT_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 const Home: React.FC = () => {
   const { firstName } = useAuth()
