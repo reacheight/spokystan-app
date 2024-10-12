@@ -81,7 +81,7 @@ const Home: React.FC = () => {
           <h3 className="text-lg font-semibold text-accent_text_color">Population</h3>
           <p className="text-2xl text-text_color">
             <MotionNumber transition={{
-              y: { type: 'spring', duration: 2, bounce: 0.5 },
+              y: { type: 'spring', duration: 5, bounce: 0.5 },
             }} value={citizenAmount} />
           </p>
         </div>
